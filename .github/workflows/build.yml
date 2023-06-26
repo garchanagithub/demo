@@ -6,10 +6,11 @@ on:
       fortifyScan:
         description: 'Fortify scan ?'
         required: false
-        default: false
+        type: boolean
       environment:
         description: 'Specify the environment'
         required: true
+        type: environment
 
 jobs:
   build:
