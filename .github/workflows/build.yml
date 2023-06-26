@@ -9,8 +9,11 @@ on:
         type: boolean
       environment:
         description: 'Specify the environment'
+        type: choice
+        options: 
+        - test
+        - int
         required: true
-        type: environment
 
 jobs:
   build:
@@ -20,7 +23,7 @@ jobs:
     steps:
       - name: Print Inputs
         run: |
-          echo "Username: ${{ inputs.fortifyScan }}"
+          echo "fortify scan required?: ${{ inputs.fortifyScan }}"
           echo "Environment: ${{ inputs.environment }}"
           
       - name: Concatenate Variables
