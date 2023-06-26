@@ -1,0 +1,13 @@
+jobs:
+  build:
+    name: Build Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Concatenate Variables
+        run: |
+          echo "Variable 1: ${{ env.PREFIX }}"
+          echo "Variable 2: ${{ env.SUFFIX }}"
+          echo "Concatenated Variable: ${{ env.PREFIX }}${{ env.SUFFIX }}"
+        env:
+          PREFIX: "Hello"
+          SUFFIX: "World"
