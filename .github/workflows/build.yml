@@ -1,0 +1,35 @@
+name: build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build Job
+    runs-on: ubuntu-latest
+
+    inputs:
+      fortifyScan:
+        description: 'Fortify scan ?'
+        required: false
+        default: false
+      environment:
+        description: 'Specify the environment'
+        required: true
+
+    steps:
+      - name: Print Inputs
+        run: |
+          echo "Username: ${{ inputs.fortifyScan }}"
+          echo "Environment: ${{ inputs.environment }}"
+          
+      - name: Concatenate Variables
+        run: |
+          echo "Variable 1: ${{ env.PREFIX }}"
+          echo "Variable 2: ${{ env.SUFFIX }}"
+          echo "Concatenated Variable: ${{ env.PREFIX }}${{ env.SUFFIX }}"
+        env:
+          PREFIX: "Hello"
+          SUFFIX: "World"
